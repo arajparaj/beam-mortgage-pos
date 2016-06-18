@@ -2391,7 +2391,6 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 		background-position: top center;
 		background-repeat: no-repeat;
 		background-size: cover;
-		color: #fff;
 		cursor: default;
 		padding: 6em 0;
 		text-align: left;
@@ -2408,7 +2407,6 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 	.links {
 		padding-left: 5px;
 		padding-right: 5px;
-		color: black;
 	}
 
 /* Main */

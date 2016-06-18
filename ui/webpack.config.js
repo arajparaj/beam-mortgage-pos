@@ -5,14 +5,14 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = {
     devtool: 'cheap-module-eval-source-map',
     entry: [
-        'webpack-dev-server/client?http://localhost:3000',
-        'webpack/hot/only-dev-server',
-        // 'babel-polyfill',
-        './src/app.jsx'
+      'webpack-dev-server/client?http://localhost:3000',
+      'webpack/hot/only-dev-server',
+        './src/app.js'
     ],
     resolve: {
-        extensions: ['', '.js', '.jsx']
+        extensions: ['', '.js']
     },
+    modulesDirectories: ["node_modules"],
     output: {
         path: path.join(__dirname, 'dist'),
         filename: 'bundle.js'
@@ -29,15 +29,18 @@ module.exports = {
         loaders: [{
             test: /\.css$/,
             loaders: ['style', 'css'],
-            include: path.join(__dirname, 'assets')
+            include: path.join(__dirname, 'src')
         }, {
-            test: /\.(js|jsx)?$/,
+            test: /\.js?$/,
             loader: 'babel',
             query: {
                 cacheDirectory: './cache',
-                presets: ["react", "es2015", "stage-0", "react-hmre"]
+                presets: ["es2015", "stage-0"]
             },
             include: path.join(__dirname, 'src')
+        }, {
+            test: /\.(png|woff|woff2|eot|ttf|svg|jpg)$/,
+            loader: 'url-loader?limit=100000'
         }]
     },
     devServer: {

@@ -15,7 +15,7 @@ module.exports = {
     modulesDirectories: ["node_modules"],
     plugins: [
         new HtmlWebpackPlugin({
-            template: './index.html'
+            template: './index.html',
         }),
         // new webpack.HotModuleReplacementPlugin(),
         new webpack.NoErrorsPlugin()
@@ -47,6 +47,7 @@ module.exports = {
         // hot: true,
         progress: true,
         stats: 'errors-only',
-        port: 3000
+        port: 3000,
+        host: '0.0.0.0'
     }
 }

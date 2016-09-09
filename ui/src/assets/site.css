@@ -189,9 +189,17 @@ nav ol {
 }
 
 .central-text-heading {
-    font-weight: normal;
-    letter-spacing: 0.266667em;
+    text-transform: uppercase;
+    font-size: 28px;
     margin-top: 1em !important;
+    margin-bottom: 1em !important;
+}
+.buy-heading {
+
+}
+
+.residential-heading{
+    font-weight: bold;
 }
 
 .text-footer {

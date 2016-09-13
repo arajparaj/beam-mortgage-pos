@@ -1,1 +1,1 @@
-import './assets/site.css';
+require('./assets/valid.css');

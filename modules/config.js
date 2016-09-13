@@ -1,50 +1,84 @@
 'use strict';
+const Confidence = require('confidence');
+const Dotenv = require('dotenv');
 
-exports.port = process.env.PORT || 3000;
-exports.mongodb = {
-  uri: process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost:27017/drywall'
+
+Dotenv.config({ silent: true });
+
+const criteria = {
+    env: process.env.NODE_ENV
 };
-exports.companyName = 'Acme, Inc.';
-exports.projectName = 'Drywall';
-exports.systemEmail = 'your@email.addy';
-exports.cryptoKey = 'k3yb0ardc4t';
-exports.loginAttempts = {
-  forIp: 50,
-  forIpAndUser: 7,
-  logExpiration: '20m'
+
+
+const config = {
+    $meta: 'This file configures the plot device.',
+    projectName: 'Aqua',
+    port: {
+        web: {
+            $filter: 'env',
+            test: 9000,
+            production: process.env.PORT,
+            $default: 8000
+        }
+    },
+    baseUrl: {
+        $filter: 'env',
+        $meta: 'values should not end in "/"',
+        production: 'https://getaqua.herokuapp.com',
+        $default: 'http://127.0.0.1:8000'
+    },
+    authAttempts: {
+        forIp: 50,
+        forIpAndUser: 7
+    },
+    cookieSecret: {
+        $filter: 'env',
+        production: process.env.COOKIE_SECRET,
+        $default: '!k3yb04rdK4tz~4qu4~k3yb04rdd0gz!'
+    },
+    hapiMongoModels: {
+        mongodb: {
+            url: {
+                $filter: 'env',
+                production: process.env.MONGODB_URI,
+                test: 'mongodb://localhost:27017/aqua-test',
+                $default: 'mongodb://localhost:27017/aqua'
+            }
+        },
+        autoIndex: true
+    },
+    nodemailer: {
+        host: 'smtp.gmail.com',
+        port: 465,
+        secure: true,
+        auth: {
+            user: 'jedireza@gmail.com',
+            pass: process.env.SMTP_PASSWORD
+        }
+    },
+    system: {
+        fromAddress: {
+            name: 'Aqua',
+            address: 'jedireza@gmail.com'
+        },
+        toAddress: {
+            name: 'Aqua',
+            address: 'jedireza@gmail.com'
+        }
+    }
 };
-exports.requireAccountVerification = false;
-exports.smtp = {
-  from: {
-    name: process.env.SMTP_FROM_NAME || exports.projectName +' Website',
-    address: process.env.SMTP_FROM_ADDRESS || 'your@email.addy'
-  },
-  credentials: {
-    user: process.env.SMTP_USERNAME || 'your@email.addy',
-    password: process.env.SMTP_PASSWORD || 'bl4rg!',
-    host: process.env.SMTP_HOST || 'smtp.gmail.com',
-    ssl: true
-  }
+
+
+const store = new Confidence.Store(config);
+
+
+exports.get = function (key) {
+
+    return store.get(key, criteria);
 };
-exports.oauth = {
-  twitter: {
-    key: process.env.TWITTER_OAUTH_KEY || '',
-    secret: process.env.TWITTER_OAUTH_SECRET || ''
-  },
-  facebook: {
-    key: process.env.FACEBOOK_OAUTH_KEY || '',
-    secret: process.env.FACEBOOK_OAUTH_SECRET || ''
-  },
-  github: {
-    key: process.env.GITHUB_OAUTH_KEY || '',
-    secret: process.env.GITHUB_OAUTH_SECRET || ''
-  },
-  google: {
-    key: process.env.GOOGLE_OAUTH_KEY || '',
-    secret: process.env.GOOGLE_OAUTH_SECRET || ''
-  },
-  tumblr: {
-    key: process.env.TUMBLR_OAUTH_KEY || '',
-    secret: process.env.TUMBLR_OAUTH_SECRET || ''
-  }
+
+
+exports.meta = function (key) {
+
+    return store.meta(key, criteria);
 };

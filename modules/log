@@ -1,0 +1,17 @@
+
+> aqua@4.1.3 start /home/arajparaj/works/beam-mortgage-pos/modules
+> gulp
+
+[22:45:10] Using gulpfile ~/works/beam-mortgage-pos/modules/gulpfile.js
+[22:45:10] Starting 'watch'...
+[22:45:11] Finished 'watch' after 206 ms
+[22:45:11] Starting 'less'...
+[22:45:11] Finished 'less' after 88 ms
+[22:45:11] Starting 'webpack'...
+[22:45:11] Starting 'media'...
+[22:45:11] Starting 'nodemon'...
+[22:45:11] Finished 'nodemon' after 7.01 ms
+[22:45:11] [nodemon] 1.10.2
+[22:45:11] [nodemon] to restart at any time, enter `rs`
+[22:45:11] [nodemon] watching: *.*
+[22:45:11] [nodemon] starting `node server.js`

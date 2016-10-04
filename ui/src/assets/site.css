@@ -165,21 +165,25 @@ nav ol {
     padding: 0
 }
 
+@font-face {
+    font-family: "proxima-nova";
+    src: url("./fonts/proximanovacond-regular-webfont.ttf");
+}
+
+@font-face {
+    font-family: "proxima-nova-light";
+    src: url("./fonts/proximanova-light-webfont.ttf");
+}
+
+html { 
+  background: url(background.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
 .central-container {
-    /*position: fixed;
-    left: 50%;
-    top: 50%;
-    width: 62%;
-    -webkit-transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    -o-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);*/
-    /*display: flex;
-    align-items: center;
-    margin-bottom: 1em;
-    justify-content: center;
-    */
     width: 70%;
     height: 60%;
     position: absolute;
@@ -199,8 +203,21 @@ nav ol {
     margin-right: 3%;
     margin-top: 1em;
     line-height: 28px;
+    font-size: 1.65em;
+    color: rgba(43, 43, 43, 0.49);
+    font-family: proxima-nova-light;
+}
+
+@media only screen and (max-width: 500px){
+.central-text {
+    margin-left: 3%;
+    margin-right: 3%;
+    margin-top: 1em;
+    line-height: 28px;
     font-size: 1.3em;
     color: rgba(43, 43, 43, 0.49);
+    font-family: proxima-nova-light;
+}    
 }
 
 .central-text-heading {
@@ -208,6 +225,7 @@ nav ol {
     font-size: 28px;
     margin-top: 1em !important;
     margin-bottom: 1em !important;
+    font-family: proxima-nova-light !important;
 }
 
 .buy-heading {}
@@ -1120,12 +1138,6 @@ body>.login-wrapper.hidden {
 
 .fadeable-plugged.display-status-hidden {
     display: none
-}
-
-@font-face {
-    font-family: 'sans serif';
-    font-weight: normal;
-    font-style: normal
 }
 
 .sqs-ui-font-family {
@@ -3553,11 +3565,6 @@ html.blogapp .state-message {
     color: #333
 }
 
-@font-face {
-    font-family: 'sans serif';
-    font-weight: normal;
-    font-style: normal
-}
 
 .sqs-ui-font-family {
     font-family: 'sans serif';
@@ -7858,7 +7865,7 @@ body:not(.button-style-default) .sqs-editable-button-font {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-weight: 600;
     letter-spacing: 1px;
-    font-family: "sans-serif";
+    font-family: proxima-nova ;
     text-transform: uppercase;
     letter-spacing: .1em;
     font-weight: 700;
@@ -8044,7 +8051,7 @@ body:not(.button-style-default) .opentable-block .OT_Find_a_Table {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-weight: 600;
     letter-spacing: 1px;
-    font-family: "sans-serif";
+    font-family: proxima-nova ;
     text-transform: uppercase;
     letter-spacing: .1em;
     font-weight: 700;
@@ -8229,7 +8236,7 @@ body:not(.button-style-default).button-corner-style-pill .opentable-block .OT_Fi
 }
 
 .category-nav-font {
-    font-family: "sans-serif";
+    font-family: proxima-nova ;
     font-size: 15px;
     text-transform: none;
     letter-spacing: 1px;
@@ -8272,8 +8279,37 @@ body:not(.button-style-default).button-corner-style-pill .opentable-block .OT_Fi
     line-height: 1.5em
 }
 
+.hamburger {
+    position: relative;
+    display: inline-block;
+    width: 1.25em;
+    height: 0.8em;
+    margin-right: 0.3em;
+    border-top: 0.2em solid #fff;
+    border-bottom: 0.2em solid #fff;
+}
+
+.hamburger:before {
+    content: "";
+    position: absolute;
+    top: 0.3em;
+    left: 0px;
+    width: 100%;
+    border-top: 0.2em solid #fff;
+}
+
+.sqs-mobile-nav-open .hamburger {
+    height: 1.25em;
+    transition: transform 0.3s;
+    background-image: url(data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjE2cHgiIGhlaWdodD0iMTZweCIgdmlld0JveD0iMCAwIDMzOS4xNzcgMzM5LjE3NyIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMzM5LjE3NyAzMzkuMTc3OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxnPgoJPHBhdGggZD0iTTI0Ny4yNDQsMTY5LjU5bDgzLjkzOC04My45MzhjNS4zMzItNS4zMjcsNy45OTQtMTEuNzk4LDcuOTk0LTE5LjQxNGMwLTcuNjE0LTIuNjY5LTE0LjA4NC03Ljk5NC0xOS40MTRMMjkyLjM1NSw3Ljk5MyAgIEMyODcuMDI2LDIuNjY1LDI4MC41NTYsMCwyNzIuOTQ0LDBjLTcuNjE3LDAtMTQuMDg1LDIuNjY1LTE5LjQxNyw3Ljk5M0wxNjkuNTksOTEuOTMxTDg1LjY1MSw3Ljk5MyAgIEM4MC4zMjUsMi42NjUsNzMuODU0LDAsNjYuMjM3LDBjLTcuNjExLDAtMTQuMDgzLDIuNjY1LTE5LjQxNCw3Ljk5M0w3Ljk5NCw0Ni44MjRDMi42NjcsNTIuMTUsMCw1OC42MjQsMCw2Ni4yMzggICBjMCw3LjYxNiwyLjY2NCwxNC4wODQsNy45OTQsMTkuNDE0bDgzLjkzNyw4My45MzhMNy45OTQsMjUzLjUyOEMyLjY2NywyNTguODU5LDAsMjY1LjMyNywwLDI3Mi45NDUgICBjMCw3LjYxLDIuNjY0LDE0LjA4Miw3Ljk5NCwxOS40MWwzOC44MywzOC44MjhjNS4zMyw1LjMzMiwxMS44MDMsNy45OTQsMTkuNDE0LDcuOTk0YzcuNjE2LDAsMTQuMDg0LTIuNjY5LDE5LjQxNC03Ljk5NCAgIGw4My45MzktODMuOTM4bDgzLjk0NCw4My45MzhjNS4zMjgsNS4zMzIsMTEuNzkzLDcuOTk0LDE5LjQxNyw3Ljk5NGM3LjYxMSwwLDE0LjA4Mi0yLjY2OSwxOS40MTEtNy45OTRsMzguODItMzguODI4ICAgYzUuMzMyLTUuMzI0LDcuOTk0LTExLjgsNy45OTQtMTkuNDFjMC03LjYxOC0yLjY2Mi0xNC4wODYtNy45OTQtMTkuNDE3TDI0Ny4yNDQsMTY5LjU5eiIgZmlsbD0iIzAwMDAwMCIvPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+Cjwvc3ZnPgo=);
+}
+
+.sqs-mobile-nav-open .hamburger:before {
+    display: none;
+}
+
 .ctrl-button .icon-hamburger:before {
-    font-family: 'sans serif';
+    font-family: proxima-nova;
     font-style: normal;
     speak: none;
     font-weight: normal;
@@ -8413,7 +8449,7 @@ body {
     background-color: #fbfbfb;
     font-family: Arial, verdana, sans-serif;
     letter-spacing: 0px;
-    font-family: "sans-serif";
+    font-family: proxima-nova;
     font-size: 14px;
     line-height: 1.6em;
     letter-spacing: .5px;
@@ -8450,7 +8486,7 @@ h3 {
     font-family: Arial, verdana, sans-serif;
     font-weight: 400;
     text-transform: uppercase;
-    font-family: "sans-serif";
+    font-family: proxima-nova ;
     line-height: 1.2em;
     text-transform: none;
     letter-spacing: 0px;
@@ -8488,7 +8524,7 @@ h3 a {
     font-family: Arial, verdana, sans-serif;
     font-weight: 400;
     text-transform: uppercase;
-    font-family: "sans-serif";
+    font-family: proxima-nova ;
     line-height: 1.2em;
     text-transform: none;
     letter-spacing: 0px;
@@ -8503,7 +8539,7 @@ h3 a {
     font-size: 18px;
     font-weight: 400;
     line-height: 1.6em;
-    font-family: "sans-serif";
+    font-family: proxima-nova ;
     font-size: 28px;
     line-height: 1.35em;
     text-transform: none;
@@ -8622,7 +8658,7 @@ body.collection-type-gallery.loaded #headerWrapper {
     font-size: 80px;
     font-weight: 400;
     letter-spacing: 8px;
-    font-family: "sans-serif";
+    font-family: proxima-nova ;
     font-size: 38px;
     text-transform: uppercase;
     letter-spacing: .21em;
@@ -8641,7 +8677,7 @@ body.collection-type-gallery.loaded #headerWrapper {
     font-weight: 700;
     letter-spacing: 1px;
     line-height: 1.3em;
-    font-family: "sans-serif";
+    font-family: proxima-nova ;
     font-size: 12px;
     line-height: 2.3em;
     text-transform: uppercase;
@@ -8688,7 +8724,7 @@ body.collection-type-gallery.loaded #headerWrapper {
 #topNav .main-nav li a {
     font-family: Arial, verdana, sans-serif;
     letter-spacing: 0px;
-    font-family: "sans-serif";
+    font-family: proxima-nova;
     font-size: 15px;
     text-transform: none;
     letter-spacing: 1px;
@@ -8926,7 +8962,7 @@ body.hide-arrows.collection-type-index #mainContent .arrow-wrapper.guide {
     font-family: Arial, verdana, sans-serif;
     font-weight: 400;
     text-transform: uppercase;
-    font-family: "sans-serif";
+    font-family: proxima-nova ;
     line-height: 1.2em;
     text-transform: none;
     letter-spacing: 0px;
@@ -8962,7 +8998,7 @@ body.show-expanded #logo {
     position: fixed;
     bottom: 0;
     left: 0;
-    margin: 50px;
+    margin: 0px !important;
     width: 60%;
     visibility: hidden
 }
@@ -8971,8 +9007,7 @@ body.show-expanded #logo {
     display: inline-block;
     font-family: Arial, verdana, sans-serif;
     font-size: 18px;
-    font-family: "sans-serif";
-    font-size: 15px;
+    font-family: proxima-nova;
     text-transform: uppercase;
     letter-spacing: 4px;
     text-decoration: none;
@@ -8980,7 +9015,8 @@ body.show-expanded #logo {
     font-style: normal;
     white-space: nowrap;
     line-height: 1.2em;
-    padding: 12px 20px
+    padding: 12px 20px;
+    padding-bottom: 7px !important;
 }
 
 .collection-detail-wrapper a .folder-title,
@@ -9511,7 +9547,7 @@ img.loading~.sqs-spin {
 
 #categoryNav ul {
     margin: -.5em 0;
-    font-family: "sans-serif";
+    font-family: proxima-nova ;
     font-size: 15px;
     text-transform: none;
     letter-spacing: 1px;
@@ -9680,7 +9716,7 @@ body.sqs-mobile-nav-open.collection-type-index .color-weight-dark .ctrl-button.m
 html.mobile-view .ctrl-button.menu {
     cursor: pointer;
     display: block;
-    top: 12px;
+    /*top: 12px;*/
     opacity: 1;
     position: fixed;
     right: 15px;
@@ -9791,7 +9827,7 @@ html.mobile-view #mobile-navigation>ul li a,
 html.mobile-view #mobile-navigation>ul li span {
     font-family: Arial, verdana, sans-serif;
     letter-spacing: 0px;
-    font-family: "sans-serif";
+    font-family: proxima-nova ;
     font-size: 15px;
     text-transform: none;
     letter-spacing: 1px;
@@ -10091,7 +10127,7 @@ html.touch .ctrl-button {
 }
 
 .site-title-font {
-    font-family: "sans-serif";
+    font-family: proxima-nova ;
     font-size: 38px;
     text-transform: uppercase;
     letter-spacing: .21em;
@@ -10100,7 +10136,7 @@ html.touch .ctrl-button {
 }
 
 .tagline-font {
-    font-family: "sans-serif";
+    font-family: proxima-nova ;
     font-size: 12px;
     line-height: 2.3em;
     text-transform: uppercase;
@@ -10110,7 +10146,7 @@ html.touch .ctrl-button {
 }
 
 .nav-font {
-    font-family: "sans-serif";
+    font-family: proxima-nova ;
     font-size: 15px;
     text-transform: none;
     letter-spacing: 1px;
@@ -10119,7 +10155,7 @@ html.touch .ctrl-button {
 }
 
 .collection-detail-font {
-    font-family: "sans-serif";
+    font-family: proxima-nova ;
     font-size: 15px;
     text-transform: uppercase;
     letter-spacing: 4px;
@@ -10129,7 +10165,7 @@ html.touch .ctrl-button {
 }
 
 .headings-font {
-    font-family: "sans-serif";
+    font-family: proxima-nova ;
     line-height: 1.2em;
     text-transform: none;
     letter-spacing: 0px;
@@ -10138,7 +10174,7 @@ html.touch .ctrl-button {
 }
 
 .body-font {
-    font-family: "sans-serif";
+    font-family: proxima-nova ;
     font-size: 14px;
     line-height: 1.6em;
     letter-spacing: .5px;
@@ -10147,7 +10183,7 @@ html.touch .ctrl-button {
 }
 
 .quote-font {
-    font-family: "sans-serif";
+    font-family: proxima-nova ;
     font-size: 28px;
     line-height: 1.35em;
     text-transform: none;
@@ -10156,7 +10192,7 @@ html.touch .ctrl-button {
 }
 
 .category-nav-font {
-    font-family: "sans-serif";
+    font-family: proxima-nova ;
     font-size: 15px;
     text-transform: none;
     letter-spacing: 1px;
@@ -10165,7 +10201,7 @@ html.touch .ctrl-button {
 }
 
 .small-button-block-font {
-    font-family: "sans-serif";
+    font-family: proxima-nova ;
     font-size: 12px;
     text-transform: uppercase;
     letter-spacing: .12em;
@@ -10174,7 +10210,7 @@ html.touch .ctrl-button {
 }
 
 .medium-button-block-font {
-    font-family: "sans-serif";
+    font-family: proxima-nova ;
     font-size: 15px;
     text-transform: uppercase;
     letter-spacing: .1em;
@@ -10183,7 +10219,7 @@ html.touch .ctrl-button {
 }
 
 .large-button-block-font {
-    font-family: "sans-serif";
+    font-family: proxima-nova ;
     font-size: 20px;
     text-transform: uppercase;
     letter-spacing: .08em;
@@ -10192,7 +10228,7 @@ html.touch .ctrl-button {
 }
 
 .system-button-font {
-    font-family: "sans-serif";
+    font-family: proxima-nova ;
     text-transform: uppercase;
     letter-spacing: .1em;
     font-weight: 700;

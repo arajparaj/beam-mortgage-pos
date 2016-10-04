@@ -6,8 +6,8 @@ module.exports = {
     devtool: 'cheap-module-eval-source-map',
     entry: [
         'webpack-dev-server/client?http://localhost:3000',
-        'webpack/hot/only-dev-server',
-        './src/app.js'
+        // 'webpack/hot/only-dev-server',
+        // './src/app.js'
     ],
     resolve: {
         extensions: ['', '.js']
@@ -21,7 +21,7 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: './index.html',
         }),
-        new webpack.HotModuleReplacementPlugin(),
+        // new webpack.HotModuleReplacementPlugin(),
         new webpack.NoErrorsPlugin()
     ],
     module: {
@@ -48,7 +48,7 @@ module.exports = {
     devServer: {
         contentBase: path.join(__dirname, 'src'),
         historyApiFallback: true,
-        hot: true,
+        // hot: true,
         progress: true,
         stats: 'errors-only',
         port: 3000,

@@ -1,3 +1,4 @@
+@import url('./bootstrap.css');
 @font-face {
     font-family: "proxima-nova";
     src: url("./fonts/proximanovacond-regular-webfont.ttf");
@@ -154,6 +155,7 @@ a:hover {
 }
 
 .central-footer {
+    margin-top: 30px;
     padding-bottom: 20px;
 }
 
@@ -259,8 +261,8 @@ a:hover {
     .central-text {
         font-size: 2rem;
     }
-    .navbar-toggle{
-    	margin-top: 14px;
+    .navbar-toggle {
+        margin-top: 14px;
     }
 }
 

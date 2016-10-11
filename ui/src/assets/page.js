@@ -1,7 +1,12 @@
+var page = require('page');
 $(document).ready(function() {
-    $('.navbar-nav , .button-container, .bottom-navbar').hover(function() {
-        $('.overlay').fadeIn();
-    }, function() {
-        $('.overlay').fadeOut();
+    page('/', function() {
+        console.log('indexpage')
     });
+
+    page('/hash', function() {
+        console.log('hash page')
+    });
+
+    page();
 });

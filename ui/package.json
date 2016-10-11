@@ -17,7 +17,9 @@
   },
   "homepage": "https://gitlab.com/arajparaj/beam-mortgage-pos#README",
   "dependencies": {
+    "bootstrap": "^3.3.7",
     "dropzone": "^4.3.0",
+    "jquery": "^3.1.1",
     "page.js": "^4.13.3"
   },
   "devDependencies": {

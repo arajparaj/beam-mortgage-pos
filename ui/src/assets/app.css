@@ -1,0 +1,262 @@
+@font-face {
+    font-family: "proxima-nova";
+    src: url("./fonts/proximanovacond-regular-webfont.ttf");
+}
+
+@font-face {
+    font-family: "proxima-nova-light";
+    src: url("./fonts/proximanova-light-webfont.ttf");
+}
+
+@font-face {
+    font-family: "proxima-nova-bold";
+    src: url("./fonts/proximanova-bold-webfont.ttf");
+}
+
+@font-face {
+    font-family: "futura";
+    src: url("./fonts/Futura-Light.ttf");
+}
+
+
+/*for mobile*/
+
+@media (min-width: 768px) {
+    .collapse {
+        display: none !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .dropdown-menu>li>a,
+    .dropdown-menu>li>a:focus,
+    .dropdown-menu>li>a:hover {
+        color: #ffffff !important;
+    }
+}
+
+html {
+    background: url(background.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+body {
+    background-color: transparent;
+    font-family: proxima-nova;
+    color: #ffffff;
+}
+
+.navbar-inverse .navbar-brand:focus,
+.navbar-inverse .navbar-brand:hover,
+.navbar-inverse .navbar-brand {
+    color: #ffffff;
+}
+
+.header {
+    font-size: 3.9rem;
+    text-transform: uppercase;
+    font-family: proxima-nova-bold;
+    letter-spacing: 2px;
+}
+
+.top-row {
+    margin-top: 4px;
+}
+
+.navbar-inverse {
+    background-color: transparent;
+    border: none;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+    color: #ffffff;
+}
+
+.container {
+    margin-left: 0px;
+}
+
+a {
+    color: #ffffff;
+}
+
+a:focus,
+a:hover {
+    color: #ffffff !important;
+    border-bottom: 1px solid #ffffff;
+    text-decoration: none;
+}
+
+.container {
+    width: 100%;
+}
+
+.navbar-nav>li {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+}
+
+.nav>li>a {
+    padding: 0px;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0;
+}
+
+.dropdown-menu {
+    border-radius: 0;
+}
+
+.dropdown-menu>li>a {
+    color: #262626;
+    border-bottom: 0px solid #ffffff;
+    font-size: 2rem;
+}
+
+.dropdown-menu>li>a:focus,
+.dropdown-menu>li>a:hover {
+    color: #262626 !important;
+    border-bottom: 0px solid #ffffff;
+    font-size: 2rem;
+}
+
+.navbar-inverse .navbar-collapse,
+.navbar-inverse .navbar-form {
+    border: none;
+}
+
+.navbar-inverse .navbar-toggle:focus,
+.navbar-inverse .navbar-toggle:hover,
+.navbar-inverse .navbar-toggle {
+    background-color: #ffffff;
+}
+
+.navbar-inverse .navbar-toggle {
+    border-color: #ffffff;
+}
+
+.navbar-inverse .navbar-toggle .icon-bar {
+    background-color: #262626;
+}
+
+.body-container {
+    color: rgba(43, 43, 43, 0.49);
+    font-family: proxima-nova-light;
+    background-color: #ffffff;
+    margin-top: 60px;
+}
+
+.central-container {
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+.central-heading {
+    text-transform: uppercase;
+    font-size: 3rem;
+    margin-top: 10px;
+}
+
+.residential-heading {
+    font-weight: bold;
+}
+
+.central-text {
+    font-size: 2.3rem;
+    font-family: proxima-nova-light;
+}
+
+.central-footer {
+    padding-bottom: 20px;
+}
+
+.button-class {
+    background-color: #FFBE00;
+    color: #ffffff;
+    padding: 14px 14px;
+    border: 1px transparent solid;
+    font-weight: bold;
+    font-size: 3rem;
+    line-height: 14px;
+    text-transform: uppercase;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    padding: 0;
+    margin: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    opacity: 0.8;
+}
+
+.bottom-navbar {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    padding: 0;
+}
+
+.bottom-navbar-container {
+    background-color: #ffffff;
+    display: inline-block;
+    font-size: 1.8rem;
+    letter-spacing: 0.4rem;
+    min-width: auto;
+    text-decoration: none;
+    padding: 7px 10px 6px 10px;
+    line-height: 2rem;
+}
+
+.bottom-link,
+.seperator {
+    color: #262626;
+}
+
+.active {
+    opacity: 0.5;
+}
+
+
+/* For Mobile 
+
+@media only screen and (max-device-width: 650px) and (-webkit-min-device-pixel-ratio: 2) {
+    .header {
+        font-size: 8rem;
+    }
+    .central-heading {
+        margin-bottom: 10px;
+    }
+    .bottom-navbar {
+        width: 100%;
+        text-align: center !important;
+        background-color: #ffffff;
+    }
+    .bottom-navbar-container {
+        font-size: 5rem;
+        line-height: 4rem;
+        padding-top: 25px;
+    }
+    .central-text {
+        font-size: 3rem;
+    }
+    .central-footer {
+        font-size: 4rem;
+    }
+    .button-class {
+        font-size: 5rem;
+        margin-top: 50px;
+        padding-top: 28px;
+    }
+}
+*/

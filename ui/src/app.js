@@ -1,1 +1,2 @@
-require('./assets/valid.css');
+require('./assets/app.css');
+require('./assets/page.js');

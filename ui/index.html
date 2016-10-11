@@ -1,199 +1,107 @@
 <!DOCTYPE html>
-<html style="" class="">
-<div id="yui3-css-stamp" style="position: absolute !important; visibility: hidden !important"></div>
-
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta charset="utf-8">
-    <title>BEAM</title>
-    <script crossorigin="anonymous" src="./assets/common.js"></script>
-    <link rel="stylesheet" type="text/css" href="./assets/site.css">
-    <script type="text/javascript">
-    Static.beam_contxt = {
-        "tweakJSON": {}
-    };
-    Beam.load(window);
-    </script>
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </head>
 
-<body class="collection-type-index collection-layout-default homepage loaded">
-    <div id="canvasWrapper">
-        <div class="color-weight-dark" id="canvas">
-            <div id="headerWrapper">
-                <header id="header">
-                    <div class="wrapper">
-                        <div id="logo" data-content-field="site-title">
-                            <h1 class="logo logo-text"><a style="letter-spacing: 0.184211em;" data-shrink-original-size="38" href="#">Beam real estate</a></h1>
-                            <script>
-                            Y.use('beam-ui-base', function(Y) {
-                                Y.one(".logo a").plug(Y.Beam.TextShrink, {
-                                    parentEl: Y.one('#header'),
-                                    triggerWidth: 768
-                                });
-                            });
-                            </script>
+<body>
+    <div class="container-fluid">
+        <div class="overlay"></div>
+        <div class="row top-row">
+            <div class="col-xs-12 nav-bar text-right">
+                <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <div class="header navbar-brand">Beam real estate</div>
                         </div>
-                        <span class="ctrl-button menu"><a class="hamburger"></a></span>
-                        <div id="topNav">
-                            <nav class="main-nav" data-content-field="navigation">
-                                <div class="nav-wrapper">
-                                    <ul class="cf">
-                                        <li class="index-collection active-link folder">
-                                            <div class="folder-parent">
-                                                <a aria-haspopup="true" href="#"><span>Buy</span></a>
-                                                <div class="folder-child-wrapper">
-                                                    <ul class="folder-child">
-                                                        <li class="">
-                                                            <a href="#" title="Beast">
-                                                                <span>Residential</span>
-                                                            </a>
-                                                        </li>
-                                                        <li class="">
-                                                            <a href="#" title="Rust">
-                                                                <span>Commercial</span>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="index-collection active-link folder">
-                                            <div class="folder-parent">
-                                                <a aria-haspopup="true" href="#"><span>Sell</span></a>
-                                                <div class="folder-child-wrapper">
-                                                    <ul class="folder-child">
-                                                        <li class="">
-                                                            <a href="#" title="Beast">
-                                                                <span>Residential</span>
-                                                            </a>
-                                                        </li>
-                                                        <li class="">
-                                                            <a href="#" title="Rust">
-                                                                <span>Commercial</span>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="page-collection">
-                                            <a href="#"><span>Listings</span></a>
-                                        </li>
-                                        <li class="blog-collection">
-                                            <a href="#"><span>About</span></a>
-                                        </li>
-                                        <li class="page-collection">
-                                            <a href="#"><span>Contact</span></a>
-                                        </li>
-                                        <li class="page-collection">
-                                            <a href="#"><span>AGENTS</span></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </nav>
-                        </div>
-                    </div>
-                </header>
-                <nav id="mobile-navigation">
-                    <ul>
-                        <li class="index-collection  active-link    active-folder">
-                            <label for="folder-toggle-56cb8c3837013b9fc42e8fff" class="folder-toggle-label"><a href="#">Buy</a></label>
-                            <ul>
-                                <li class="gallery-collection">
-                                    <a href="#">Residential</a>
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav pull-right">
+                                <li>
+                                    <div class="dropdown">
+                                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">+Buy</a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="#">Residential</a></li>
+                                            <li><a href="#">Commercial</a></li>
+                                        </ul>
+                                    </div>
                                 </li>
-                                <li class="gallery-collection">
-                                    <a href="#">Commercial</a>
+                                <li>
+                                    <div class="dropdown">
+                                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">+Sell</a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="#">Residential</a></li>
+                                            <li><a href="#">Commercial</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href="#">Listings</a>
+                                </li>
+                                <li>
+                                    <a href="#">About</a>
+                                </li>
+                                <li>
+                                    <a href="#">Contact</a>
+                                </li>
+                                <li>
+                                    <a href="#">AGENTS</a>
                                 </li>
                             </ul>
-                        </li>
-                        <li class="index-collection  active-link    active-folder">
-                            <label for="folder-toggle-56cb8c3837013b9fc42e8fff" class="folder-toggle-label"><a href="#">Sell</a></label>
-                            <ul>
-                                <li class="gallery-collection">
-                                    <a href="#">Residential</a>
-                                </li>
-                                <li class="gallery-collection">
-                                    <a href="#">Commercial</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="page-collection">
-                            <a href="#">Listings</a>
-                        </li>
-                        <li class="page-collection">
-                            <a href="#">About</a>
-                        </li>
-                        <li class="page-collection">
-                            <a href="#">Contact</a>
-                        </li>
-                        <li class="page-collection">
-                            <a href="#">AGENTS</a>
-                        </li>
-                    </ul>
-                    <div id="mobile-location">
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                    </div>
+                        </div>
                 </nav>
+                </div>
             </div>
-            <div id="yui_3_17_2_1_1472898678821_334" class="pageWrapper">
-                <section id="page">
-                    <div id="mainContent" role="main" data-content-field="main-content">
-                        <div id="fullscreenBrowser" class="galleryWrapper">
-                            <div class="slideshow main sqs-gallery-design-stacked">
-                                <div style="opacity: 1; z-index: 889; overflow: hidden;" data-type="image" id="yui_3_17_2_1_1472898678821_248" class="slide content-fill sqs-gallery-design-stacked-slide loaded sqs-active-slide">
-                                    <div class="central-container">
-                                        <div class="central-text">
-                                            <div class="central-text-heading">
-                                                <span class="buy-heading">buy</span><span class="residential-heading">residential</span>
-                                            </div>
-                                            <p>
-                                                We're real estate entrepenures who are passionate about helping others achieve their goals. With more than 10 years of experience in real estate and over 3000 homes sold. Beam Real Estate provides award winning service to our clients We'll pair you with the best property for your needs</p>
-                                            <p>We sell spaces made for living life. We market homes to accommodate families of all sizes. We discover homes in the place you want at the price you want. We handle all the complex stuff so that you can enjoy the process of buying your home
-                                            </p>
-                                            <div class="text-footer">
-                                                <p class="text">Sound Good?</p>
-                                                <button>Let's get Started</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <img data-image-resolution="1500w" alt="0" style="top: -31px; left: 0px; width: 1364px; height: 1364px; position: relative;" class="loaded" data-image-dimensions="2500x2500" data-image-focal-point="0.488,0.14" data-color-topleft="#398989" data-weight-topleft="dark" data-load="false">
-                                    <div style="visibility: hidden;" class="index-overlay"></div>
-                                    <div class="collection-detail-wrapper">
-                                        <a href="#">
-                                            <span class="folder-title">REAL ESTATE</span>
-                                            <span class="folder-separator">&nbsp;/&nbsp;</span>
-                                            <span class="collection-title">MORTGAGE</span>
-                                        </a>
-                                    </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="col-md-8 col-md-offset-2 body-container">
+                    <div class="central-container">
+                        <div class="central-heading">
+                            <span class="buy-heading">buy</span><span class="residential-heading">residential</span>
+                        </div>
+                        <div class="central-text">
+                            <p>
+                                We're real estate entrepenures who are passionate about helping others achieve their goals. With more than 10 years of experience in real estate and over 3000 homes sold. Beam Real Estate provides award winning service to our clients. We'll pair you with the best property for your needs.</p>
+                            <p>We sell spaces made for living life. We market homes to accommodate families of all sizes. We discover homes in the place you want at the price you want. We handle all the complex stuff so that you can enjoy the process of buying your home.
+                            </p>
+                            <div class="row central-footer">
+                                <div class="col-sm-3 sound-good">
+                                    <p>Sound Good?</p>
+                                </div>
+                                <div class="col-lg-5 button-container">
+                                    <button class="button-class">Let's get Started</button>
                                 </div>
                             </div>
-                            <script>
-                            Y.use('beam-ui-base', function(Y) {
-                                Y.all(".collection-detail-wrapper a").each(function(node) {
-                                    node.plug(Y.Beam.TextShrink, {
-                                        triggerWidth: 768
-                                    });
-                                });
-                            });
-                            </script>
                         </div>
                     </div>
-                </section>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-5 text-left bottom-navbar">
+                <div class="bottom-navbar-container">
+                    <a href="#">
+                        <span class="bottom-link active">REAL ESTATE</span>
+                    </a>
+                    <span class="seperator">&nbsp;/&nbsp;</span>
+                    <a href="#">
+                        <span class="bottom-link">MORTGAGE</span>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
-    <script>
-    Beam.afterBodyLoad(Y);
-    </script>
-    <script type="text/javascript" src="./assets/a.js"></script>
 </body>
 
 </html>

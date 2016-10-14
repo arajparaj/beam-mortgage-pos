@@ -38,6 +38,10 @@ $(document).ready(function() {
         loadPage('/pages/mortgage/about.html');
     });
 
+    page('/mortgage/agents', function() {
+        loadPage('/pages/mortgage/agents.html');
+    });
+
     page('*', function() {
         page.redirect('/mortgage');
     })

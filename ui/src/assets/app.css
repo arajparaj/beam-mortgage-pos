@@ -221,29 +221,26 @@ a:hover {
     opacity: 0.5;
 }
 
-span.clear {
-    clear: left;
-    display: block;
-}
-
-.agents-body-container {
-}
-
 .agent-container {
     text-align: center;
     padding: 0px;
 }
-
-.agent-container>div:not(:last-child):after {
-    content: "|";
-    font-size: 5rem;
-    float: right;
+.agent-container>div:not(:last-child):after{
+    content: " ";
+    position: absolute;
+    height: 280px;
+    border: 2.1px solid #c7bbbb;
+    margin-top: 60px;
+    padding-right: 0px;
 }
+
 
 .agents-body {
     padding-top: 20px;
     display: inline-block;
     float: none;
+    overflow: hidden;
+    padding-bottom: 40px;
 }
 
 .agents-heading {
@@ -252,7 +249,7 @@ span.clear {
 }
 
 .agents-body>div {
-    padding: 30px 0px 20px 0px;
+    padding: 30px 30px 20px 0px;
     min-width: 300px;
     text-align: center;
 }

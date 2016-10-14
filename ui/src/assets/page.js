@@ -3,31 +3,39 @@ import page from 'page';
 $(document).ready(function() {
     let bodyContainer = $('#container-body');
 
+    function loadPage(url) {
+        //do some animation
+        bodyContainer.load(url);
+    }
     page('/', function() {
-        // bodyContainer.load('/pages/mortgage/buy/residential/home.html');
         page.redirect('/mortgage');
     });
 
     page('/mortgage', function() {
-        $('.dropdown-menu a').each(function() {
+        $('.navbar-nav a').each(function() {
             this.href = this.baseURI + this.pathname;
         });
     });
 
+
     page('/mortgage/buy/residential', function() {
-        bodyContainer.load('/pages/mortgage/buy/residential/home.html');
+        loadPage('/pages/mortgage/buy/residential/home.html');
     });
 
     page('/mortgage/buy/commercial', function() {
-        bodyContainer.load('/pages/mortgage/buy/commercial/home.html');
+        loadPage('/pages/mortgage/buy/commercial/home.html');
     });
 
     page('/mortgage/sell/residential', function() {
-        bodyContainer.load('/pages/mortgage/sell/residential/home.html');
+        loadPage('/pages/mortgage/sell/residential/home.html');
     });
 
     page('/mortgage/sell/commercial', function() {
-        bodyContainer.load('/pages/mortgage/sell/commercial/home.html');
+        loadPage('/pages/mortgage/sell/commercial/home.html');
+    });
+
+    page('/mortgage/about', function() {
+        loadPage('/pages/mortgage/about.html');
     });
 
     page('*', function() {

@@ -221,6 +221,22 @@ a:hover {
     opacity: 0.5;
 }
 
+.vcenter {
+    text-align: center;
+}
+
+.agents-body {
+    padding-top: 20px;
+    border: 1px solid green;
+    display: inline-block;
+    float: none;
+}
+
+.agents-body>div {
+    margin-left: 50px;
+    border: 1px solid red;
+}
+
 
 /*for mobile*/
 

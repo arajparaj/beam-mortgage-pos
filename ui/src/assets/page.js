@@ -2,10 +2,15 @@ import page from 'page';
 
 $(document).ready(function() {
     let bodyContainer = $('#container-body');
+    let loadingIcon = $('.loading-overlay,.cssload-thecube');
 
     function loadPage(url) {
         //do some animation
-        bodyContainer.load(url);
+        loadingIcon.fadeIn();
+        bodyContainer.load(url, function() {
+            loadingIcon.fadeOut();
+        });
+
     }
     page('/', function() {
         page.redirect('/mortgage');
@@ -42,9 +47,9 @@ $(document).ready(function() {
         loadPage('/pages/mortgage/agents.html');
     });
 
-    page('*', function() {
-        page.redirect('/mortgage');
-    })
+    // page('*', function() {
+    //     page.redirect('/mortgage');
+    // })
 
     page();
 });

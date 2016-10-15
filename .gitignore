@@ -2,3 +2,5 @@ ui/node_modules
 modules/node_modules
 cache
 *.log
+ui/dist
+ui/dist/*

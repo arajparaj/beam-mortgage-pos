@@ -7,9 +7,10 @@ const Joi = require('joi');
 const internals = {};
 
 
-internals.applyRoutes = function (server, next) {
+internals.applyRoutes = function(server, next) {
 
     const User = server.plugins['hapi-mongo-models'].User;
+    const Account = server.plugins['hapi-mongo-models'].Account;
 
 
     server.route({
@@ -35,7 +36,7 @@ internals.applyRoutes = function (server, next) {
                 AuthPlugin.preware.ensureAdminGroup('root')
             ]
         },
-        handler: function (request, reply) {
+        handler: function(request, reply) {
 
             const query = {};
             if (request.query.username) {
@@ -76,7 +77,7 @@ internals.applyRoutes = function (server, next) {
                 AuthPlugin.preware.ensureAdminGroup('root')
             ]
         },
-        handler: function (request, reply) {
+        handler: function(request, reply) {
 
             User.findById(request.params.id, (err, user) => {
 
@@ -103,7 +104,7 @@ internals.applyRoutes = function (server, next) {
                 scope: ['admin', 'account']
             }
         },
-        handler: function (request, reply) {
+        handler: function(request, reply) {
 
             const id = request.auth.credentials.user._id.toString();
             const fields = User.fieldsAdapter('username email roles');
@@ -140,10 +141,9 @@ internals.applyRoutes = function (server, next) {
                 }
             },
             pre: [
-                AuthPlugin.preware.ensureAdminGroup('root'),
-                {
+                AuthPlugin.preware.ensureAdminGroup('root'), {
                     assign: 'usernameCheck',
-                    method: function (request, reply) {
+                    method: function(request, reply) {
 
                         const conditions = {
                             username: request.payload.username
@@ -164,7 +164,7 @@ internals.applyRoutes = function (server, next) {
                     }
                 }, {
                     assign: 'emailCheck',
-                    method: function (request, reply) {
+                    method: function(request, reply) {
 
                         const conditions = {
                             email: request.payload.email
@@ -186,17 +186,61 @@ internals.applyRoutes = function (server, next) {
                 }
             ]
         },
-        handler: function (request, reply) {
+        handler: function(request, reply) {
+
 
             const username = request.payload.username;
             const password = request.payload.password;
             const email = request.payload.email;
+
+
 
             User.create(username, password, email, (err, user) => {
 
                 if (err) {
                     return reply(err);
                 }
+
+                Account.create(username, (err, account) => {
+
+                    if (err) {
+                        return reply(err);
+                    }
+
+                    const id = account._id;
+                    
+                    const update = {
+                        $set: {
+                            user: {
+                                id: user._id.toString(),
+                                name: user.username
+                            }
+                        }
+                    };
+                    Account.findByIdAndUpdate(id, update, (err, account) => {
+                        if (err) {
+                            return reply(err);
+                        }
+                    });
+
+
+                    const userId = user._id;
+                    const userUpdate = {
+                        $set: {
+                            'roles.account': {
+                                id: account._id.toString(),
+                                name: user.name
+                            }
+                        }
+                    };
+                    User.findByIdAndUpdate(userId, userUpdate, (err, user) => {
+                        if (err) {
+                            return reply(err);
+                        }
+                    });
+
+                });
+
 
                 reply(user);
             });
@@ -223,10 +267,9 @@ internals.applyRoutes = function (server, next) {
                 }
             },
             pre: [
-                AuthPlugin.preware.ensureAdminGroup('root'),
-                {
+                AuthPlugin.preware.ensureAdminGroup('root'), {
                     assign: 'usernameCheck',
-                    method: function (request, reply) {
+                    method: function(request, reply) {
 
                         const conditions = {
                             username: request.payload.username,
@@ -248,7 +291,7 @@ internals.applyRoutes = function (server, next) {
                     }
                 }, {
                     assign: 'emailCheck',
-                    method: function (request, reply) {
+                    method: function(request, reply) {
 
                         const conditions = {
                             email: request.payload.email,
@@ -271,7 +314,7 @@ internals.applyRoutes = function (server, next) {
                 }
             ]
         },
-        handler: function (request, reply) {
+        handler: function(request, reply) {
 
             const id = request.params.id;
             const update = {
@@ -313,10 +356,9 @@ internals.applyRoutes = function (server, next) {
                 }
             },
             pre: [
-                AuthPlugin.preware.ensureNotRoot,
-                {
+                AuthPlugin.preware.ensureNotRoot, {
                     assign: 'usernameCheck',
-                    method: function (request, reply) {
+                    method: function(request, reply) {
 
                         const conditions = {
                             username: request.payload.username,
@@ -338,7 +380,7 @@ internals.applyRoutes = function (server, next) {
                     }
                 }, {
                     assign: 'emailCheck',
-                    method: function (request, reply) {
+                    method: function(request, reply) {
 
                         const conditions = {
                             email: request.payload.email,
@@ -361,7 +403,7 @@ internals.applyRoutes = function (server, next) {
                 }
             ]
         },
-        handler: function (request, reply) {
+        handler: function(request, reply) {
 
             const id = request.auth.credentials.user._id.toString();
             const update = {
@@ -403,10 +445,9 @@ internals.applyRoutes = function (server, next) {
                 }
             },
             pre: [
-                AuthPlugin.preware.ensureAdminGroup('root'),
-                {
+                AuthPlugin.preware.ensureAdminGroup('root'), {
                     assign: 'password',
-                    method: function (request, reply) {
+                    method: function(request, reply) {
 
                         User.generatePasswordHash(request.payload.password, (err, hash) => {
 
@@ -420,7 +461,7 @@ internals.applyRoutes = function (server, next) {
                 }
             ]
         },
-        handler: function (request, reply) {
+        handler: function(request, reply) {
 
             const id = request.params.id;
             const update = {
@@ -455,10 +496,9 @@ internals.applyRoutes = function (server, next) {
                 }
             },
             pre: [
-                AuthPlugin.preware.ensureNotRoot,
-                {
+                AuthPlugin.preware.ensureNotRoot, {
                     assign: 'password',
-                    method: function (request, reply) {
+                    method: function(request, reply) {
 
                         User.generatePasswordHash(request.payload.password, (err, hash) => {
 
@@ -472,7 +512,7 @@ internals.applyRoutes = function (server, next) {
                 }
             ]
         },
-        handler: function (request, reply) {
+        handler: function(request, reply) {
 
             const id = request.auth.credentials.user._id.toString();
             const update = {
@@ -513,7 +553,7 @@ internals.applyRoutes = function (server, next) {
                 AuthPlugin.preware.ensureAdminGroup('root')
             ]
         },
-        handler: function (request, reply) {
+        handler: function(request, reply) {
 
             User.findByIdAndDelete(request.params.id, (err, user) => {
 
@@ -535,7 +575,7 @@ internals.applyRoutes = function (server, next) {
 };
 
 
-exports.register = function (server, options, next) {
+exports.register = function(server, options, next) {
 
     server.dependency(['auth', 'hapi-mongo-models'], internals.applyRoutes);
 

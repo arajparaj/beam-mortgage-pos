@@ -98,11 +98,7 @@ class HomePage extends React.Component {
                             </div>
                         </div>
                     </div>
-                    <div className="col-sm-5">
-                        <h1 className="page-header">Throttle guage</h1>
-                        <div className="text-center">
-                            <i className="fa fa-dashboard bamf"></i>
-                        </div>
+                    <div className="col-sm-5">                        
                     </div>
                 </div>
             </section>

@@ -11,9 +11,9 @@ $(document).ready(function() {
         $('.overlay').fadeOut();
     });
 
-    $('li>a').click(function() {
-        $('.overlay').fadeOut();
-    });
+    // $('li>a').click(function() {
+    //     $('.overlay').fadeOut();
+    // });
 
     // $(".dropdown-menu a").click(function() {
     //     $(this).closest(".dropdown-menu").prev().dropdown("toggle");

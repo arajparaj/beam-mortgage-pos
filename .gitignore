@@ -4,3 +4,5 @@ cache
 *.log
 ui/dist
 ui/dist/*
+modules/public/*
+modules/public

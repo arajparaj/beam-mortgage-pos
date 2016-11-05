@@ -6,7 +6,7 @@ class Footer extends React.Component {
     render() {
 
         return (
-            <div className="footer">
+            <div className="footer navbar-fixed-bottom">
                 <div className="container">
                     <span className="copyright pull-right">
                         &#169; Beam Mortgage.

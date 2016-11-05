@@ -95,7 +95,7 @@ internals.applyRoutes = function (server, next) {
         handler: function (request, reply) {
 
             const id = request.auth.credentials.roles.account._id.toString();
-            const fields = Account.fieldsAdapter('user name timeCreated');
+            const fields = Account.fieldsAdapter('user name timeCreated notes phoneNumber licenseNumber');
 
             Account.findById(id, fields, (err, account) => {
 
@@ -157,7 +157,9 @@ internals.applyRoutes = function (server, next) {
                         first: Joi.string().required(),
                         middle: Joi.string().allow(''),
                         last: Joi.string().required()
-                    }).required()
+                    }).required(),
+                    phoneNumber: Joi.string().required(),
+                    licenseNumber: Joi.string().required()
                 }
             }
         },
@@ -166,7 +168,9 @@ internals.applyRoutes = function (server, next) {
             const id = request.params.id;
             const update = {
                 $set: {
-                    name: request.payload.name
+                    name: request.payload.name,
+                    phoneNumber: request.payload.phoneNumber,
+                    licenseNumber : request.payload.licenseNumber
                 }
             };
 
@@ -200,7 +204,9 @@ internals.applyRoutes = function (server, next) {
                         first: Joi.string().required(),
                         middle: Joi.string().allow(''),
                         last: Joi.string().required()
-                    }).required()
+                    }).required(),
+                    phoneNumber:Joi.string().allow(''),
+                    licenseNumber:Joi.string().allow('')
                 }
             }
         },
@@ -209,7 +215,9 @@ internals.applyRoutes = function (server, next) {
             const id = request.auth.credentials.roles.account._id.toString();
             const update = {
                 $set: {
-                    name: request.payload.name
+                    name: request.payload.name,
+                    phoneNumber: request.payload.phoneNumber,
+                    licenseNumber: request.payload.licenseNumber
                 }
             };
             const findOptions = {
@@ -442,7 +450,7 @@ internals.applyRoutes = function (server, next) {
 
             const id = request.params.id;
             const update = {
-                $push: {
+                $set: {
                     notes: {
                         data: request.payload.data,
                         timeCreated: new Date(),

@@ -229,7 +229,7 @@ internals.applyRoutes = function(server, next) {
                         $set: {
                             'roles.account': {
                                 id: account._id.toString(),
-                                name: user.name
+                                name: user.username
                             }
                         }
                     };

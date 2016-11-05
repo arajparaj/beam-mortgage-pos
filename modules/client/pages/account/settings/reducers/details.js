@@ -35,14 +35,18 @@ const reducer = function (state = initialState, action) {
             error: validation.error,
             hasError: validation.hasError,
             help: validation.help,
-            name: action.response.name
+            name: action.response.name,
+            phoneNumber:action.response.phoneNumber,
+            licenseNumber:action.response.licenseNumber
         });
     }
 
     if (action.type === Constants.SAVE_DETAILS) {
         return ObjectAssign({}, state, {
             loading: true,
-            name: action.request.data.name
+            name: action.request.data.name,
+            phoneNumber : action.request.data.phoneNumber,
+            licenseNumber : action.request.data.licenseNumber
         });
     }
 
@@ -58,6 +62,8 @@ const reducer = function (state = initialState, action) {
 
         if (action.response.hasOwnProperty('name')) {
             stateUpdates.name = action.response.name;
+            stateUpdates.phoneNumber = action.response.phoneNumber,
+            stateUpdates.licenseNumber = action.response.licenseNumber
         }
 
         return ObjectAssign({}, state, stateUpdates);

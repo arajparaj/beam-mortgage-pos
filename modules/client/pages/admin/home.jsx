@@ -47,6 +47,7 @@ class HomePage extends React.Component {
                 <div className="row">
                     <div className="col-sm-7">
                         <h1 className="page-header">Welcome Admin</h1>
+                        {/*
                         <div className="row">
                             <div className="col-sm-4">
                                 <div className="well text-center">
@@ -97,6 +98,7 @@ class HomePage extends React.Component {
                                 </div>
                             </div>
                         </div>
+                        */}
                     </div>
                     <div className="col-sm-5">
                     </div>

@@ -30,14 +30,18 @@ class DetailsForm extends React.Component {
         super(props);
 
         this.state = {
-            name: props.name
+            name: props.name,
+            phoneNumber : props.phoneNumber,
+            licenseNumber : props.licenseNumber
         };
     }
 
     componentWillReceiveProps(nextProps) {
 
         this.setState({
-            name: nextProps.name
+            name: nextProps.name,
+            phoneNumber : nextProps.phoneNumber,
+            licenseNumber : nextProps.licenseNumber
         });
     }
 
@@ -47,7 +51,9 @@ class DetailsForm extends React.Component {
         event.stopPropagation();
 
         Actions.saveDetails({
-            name: this.state.name
+            name: this.state.name,
+            phoneNumber : this.state.phoneNumber,
+            licenseNumber : this.state.licenseNumber
         });
     }
 
@@ -110,6 +116,24 @@ class DetailsForm extends React.Component {
                         onChange={LinkState.bind(this)}
                         hasError={this.props.hasError['name.last']}
                         help={this.props.help['name.last']}
+                        disabled={this.props.loading}
+                    />
+                    <TextControl
+                        name="phoneNumber"
+                        label="Phone Number"
+                        value={this.state.phoneNumber}
+                        onChange={LinkState.bind(this)}
+                        hasError={this.props.hasError['phoneNumber']}
+                        help={this.props.help['phoneNumber']}
+                        disabled={this.props.loading}
+                    />
+                    <TextControl
+                        name="licenseNumber"
+                        label="License Number"
+                        value={this.state.licenseNumber}
+                        onChange={LinkState.bind(this)}
+                        hasError={this.props.hasError['licenseNumber']}
+                        help={this.props.help['licenseNumber']}
                         disabled={this.props.loading}
                     />
                     <ControlGroup hideLabel={true} hideHelp={true}>

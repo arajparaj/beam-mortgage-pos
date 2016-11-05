@@ -7,7 +7,7 @@ const NoteEntry = require('./note-entry');
 
 
 const Account = BaseModel.extend({
-    constructor: function (attrs) {
+    constructor: function(attrs) {
 
         ObjectAssign(this, attrs);
     }
@@ -37,7 +37,9 @@ Account.schema = Joi.object().keys({
         complete: Joi.boolean(),
         token: Joi.string()
     }),
-    timeCreated: Joi.date()
+    timeCreated: Joi.date(),
+    phoneNumber: Joi.string(),
+    licenseNumber: Joi.string()
 });
 
 
@@ -47,7 +49,7 @@ Account.indexes = [
 ];
 
 
-Account.create = function (name, callback) {
+Account.create = function(name, callback) {
 
     const nameParts = name.trim().split(/\s/);
 
@@ -57,7 +59,7 @@ Account.create = function (name, callback) {
             middle: nameParts.length > 1 ? nameParts.shift() : '',
             last: nameParts.join(' ')
         },
-        timeCreated: new Date()
+        timeCreated: new Date(),
     };
 
     this.insertOne(document, (err, docs) => {
@@ -71,7 +73,7 @@ Account.create = function (name, callback) {
 };
 
 
-Account.findByUsername = function (username, callback) {
+Account.findByUsername = function(username, callback) {
 
     const query = { 'user.name': username.toLowerCase() };
     this.findOne(query, callback);

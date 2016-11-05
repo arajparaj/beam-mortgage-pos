@@ -14,7 +14,7 @@ const propTypes = {
     hasError: React.PropTypes.object,
     help: React.PropTypes.object,
     loading: React.PropTypes.bool,
-    notes: React.PropTypes.array,
+    notes: React.PropTypes.string,
     showSaveSuccess: React.PropTypes.bool
 };
 
@@ -25,14 +25,14 @@ class NoteForm extends React.Component {
         super(props);
 
         this.state = {
-            newNote: ''
+            notes: props.notes
         };
     }
 
     componentWillReceiveProps(nextProps) {
 
         this.setState({
-            newNote: nextProps.newNote
+            notes: nextProps.notes
         });
     }
 
@@ -43,14 +43,13 @@ class NoteForm extends React.Component {
 
         const id = this.props.accountId;
         const data = {
-            data: this.state.newNote
+            data: this.state.notes
         };
 
         Actions.newNote(id, data);
     }
 
     render() {
-
         const alerts = [];
 
         if (this.props.showSaveSuccess) {
@@ -70,26 +69,8 @@ class NoteForm extends React.Component {
             />);
         }
 
-        const noteHistory = this.props.notes.map((note) => {
-
-            const moment = Moment(note.timeCreated);
-
-            return (
-                <li key={note.timeCreated} className="list-group-item">
-                    <div>{note.data}</div>
-                    <span
-                        title={moment.toString()}
-                        className="badge">
-
-                        {note.userCreated.name} - {moment.fromNow()}
-                    </span>
-                    <div className="clearfix"></div>
-                </li>
-            );
-        });
-
         const formElements = <fieldset>
-            <legend>Notes</legend>
+            <legend>Note</legend>
             {alerts}
             <ControlGroup
                 groupClasses={{ 'form-group-notes': true }}
@@ -98,11 +79,11 @@ class NoteForm extends React.Component {
                 help={this.props.help.data}>
 
                 <textarea
-                    ref="newNote"
-                    name="newNote"
-                    rows="3"
+                    ref="notes"
+                    name="notes"
+                    rows="20"
                     className="form-control"
-                    value={this.state.newNote}
+                    value={this.state.notes}
                     onChange={LinkState.bind(this)}
                 >
                 </textarea>
@@ -112,16 +93,13 @@ class NoteForm extends React.Component {
                     className="btn btn-default btn-block"
                     disabled={this.props.loading}>
 
-                    Add new note
+                    Update Note
                     <Spinner
                         space="left"
                         show={this.props.loading}
                     />
                 </button>
             </ControlGroup>
-            <ul className="list-group list-group-notes">
-                {noteHistory}
-            </ul>
         </fieldset>;
 
         return (

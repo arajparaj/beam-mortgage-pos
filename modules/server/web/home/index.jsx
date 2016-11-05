@@ -15,7 +15,7 @@ class HomePage extends React.Component {
                 activeTab="home">
 
                 <div className="jumbotron">
-                    <h1>Welcome.</h1>
+                    <h1>Welcome</h1>
                     <div>
                         <p className="lead"></p>
                         <div>
@@ -27,9 +27,6 @@ class HomePage extends React.Component {
                             </a>
                         </div>
                     </div>
-                </div>
-                <div className="row">
-
                 </div>
             </Layout>
         );

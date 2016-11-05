@@ -34,7 +34,7 @@ class DefaultLayout extends React.Component {
                             {this.props.children}
                         </div>
                     </div>
-                    <div className="footer">
+                    <div className="footer navbar-fixed-bottom">
                         <div className="container">
                             <span className="copyright pull-right">
                                 &copy; {year} Beam Mortgage.

@@ -82,7 +82,6 @@ class DetailsPage extends React.Component {
                         <UserForm {...this.state.user} />
                     </div>
                     <div className="col-sm-4">
-                        <StatusForm {...this.state.status} />
                         <NoteForm {...this.state.note} />
                     </div>
                     <div className="col-sm-12">

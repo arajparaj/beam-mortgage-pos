@@ -22,7 +22,7 @@ const reducer = function (state = initialState, action) {
         stateUpdates.accountId = action.response._id;
 
         if (action.response.hasOwnProperty('notes')) {
-            stateUpdates.notes = action.response.notes.reverse();
+            stateUpdates.notes = action.response.notes.data;
         }
 
         return ObjectAssign({}, stateUpdates);
@@ -47,7 +47,7 @@ const reducer = function (state = initialState, action) {
 
         if (action.response.hasOwnProperty('notes')) {
             stateUpdates.newNote = '';
-            stateUpdates.notes = action.response.notes.reverse();
+            stateUpdates.notes = action.response.notes.data;
         }
 
         return ObjectAssign({}, state, stateUpdates);

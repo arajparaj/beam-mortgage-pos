@@ -33,7 +33,9 @@ const reducer = function (state = initialState, action) {
             showFetchFailure: !!action.err,
             error: validation.error,
             _id: action.response._id,
-            name: action.response.name
+            name: action.response.name,
+            phoneNumber:action.response.phoneNumber,
+            licenseNumber: action.response.licenseNumber
         });
     }
 

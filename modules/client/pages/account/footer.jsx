@@ -8,7 +8,7 @@ class Footer extends React.Component {
         const year = new Date().getFullYear();
 
         return (
-            <div className="footer">
+            <div className="footer navbar-fixed-bottom">
                 <div className="container">
                     <span className="copyright pull-right">
                         &#169; {year} Beam mortgage.

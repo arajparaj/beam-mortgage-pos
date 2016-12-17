@@ -147,7 +147,7 @@ if(!empty($_POST['css'])){
 <div id="page-wrapper"> <!-- leave in place for full-screen backgrounds etc -->
 <div class="container"> <!-- -fluid -->
 
-<h1 class="text-center">UserSpice Dashboard <?=$user_spice_ver?></h1>
+<h1 class="text-center">Beam Admin Dashboard</h1>
 
 <div class="row"> <!-- row for Users, Permissions, Pages, Email settings panels -->
 	<h2>Admin Panels</h2>
@@ -194,7 +194,7 @@ if(!empty($_POST['css'])){
 	<div class="col-xs-6 col-md-3">
 	<div class="panel panel-default">
 	<div class="panel-heading"><strong>Email Settings</strong></div>
-	<div class="panel-body text-center"><div class="huge"> <i class='fa fa-paper-plane fa-1x'></i> 9</div></div>
+	<div class="panel-body text-center"><div class="huge"> <i class='fa fa-paper-plane fa-1x'></i> </div></div>
 	<div class="panel-footer">
 	<span class="pull-left"><a href='email_settings.php'>Manage</a></span>
 	<span class="pull-right"><i class='fa fa-arrow-circle-right'></i></span>
@@ -232,209 +232,12 @@ if(file_exists($abs_us_root.$us_url_root.'usersc/includes/admin_panels.php')){
 
 
 	<div class="panel panel-default">
-	<div class="panel-heading"><strong>All Visitors</strong> <span class="small">(Whether logged in or not)</span></div>
-	<div class="panel-body">
-	<?php  if($settings->track_guest == 1){ ?>
-	<?="In the last 30 minutes, the unique visitor count was ".count_users()."<br>";?>
-	<?php }else{ ?>
-	Guest tracking off. Turn "Track Guests" on below for advanced tracking statistics.
-	<?php } ?>
-	</div>
-	</div><!--/panel-->
+	
 
 	</div> <!-- /col -->
-
-	<div class="col-xs-12 col-md-6">
-	<div class="panel panel-default">
-	<div class="panel-heading"><strong>Logged In Users</strong> <span class="small">(past 24 hours)</span></div>
-	<div class="panel-body">
-	<div class="uvistable table-responsive">
-	<table class="table">
-	<?php if($settings->track_guest == 1){ ?>
-	<thead><tr><th>Username</th><th>IP</th><th>Last Activity</th></tr></thead>
-	<tbody>
-
-	<?php foreach($recentUsers as $v1){
-		$user_id=$v1->user_id;
-		$username=name_from_id($v1->user_id);
-		$timestamp=date("Y-m-d H:i:s",$v1->timestamp);
-		$ip=$v1->ip;
-
-		if ($user_id==0){
-			$username="guest";
-		}
-
-		if ($user_id==0){?>
-			<tr><td><?=$username?></td><td><?=$ip?></td><td><?=$timestamp?></td></tr>
-		<?php }else{ ?>
-			<tr><td><a href="admin_user.php?id=<?=$user_id?>"><?=$username?></a></td><td><?=$ip?></td><td><?=$timestamp?></td></tr>
-		<?php } ?>
-
-	<?php } ?>
-
-	</tbody>
-	<?php }else{echo 'Guest tracking off. Turn "Track Guests" on below for advanced tracking statistics.';} ?>
-	</table>
-	</div>
-	</div>
-	</div><!--/panel-->
 	</div> <!-- /col2/2 -->
 </div> <!-- /row -->
 
-
-<div class="row"> <!-- rows for Main Settings -->
-	<div class="col-xs-12 col-md-6"> <!-- Site Settings Column -->
-		<form class="" action="admin.php" name="settings" method="post">
-		<h2 >Site Settings</h2>
-
-		<!-- List group -->
-
-		<!-- Site Name -->
-		<div class="form-group">
-		<label for="site_name">Site Name</label>
-		<input type="text" class="form-control" name="site_name" id="site_name" value="<?=$settings->site_name?>">
-		</div>
-
-		<!-- Recaptcha Option -->
-		<div class="form-group">
-			<label for="recaptcha">Recaptcha</label>
-			<select id="recaptcha" class="form-control" name="recaptcha">
-				<option value="1" <?php if($settings->recaptcha==1) echo 'selected="selected"'; ?> >Enabled</option>
-				<option value="0" <?php if($settings->recaptcha==0) echo 'selected="selected"'; ?> >Disabled</option>
-			</select>
-		</div>
-
-		<!-- Force SSL -->
-		<div class="form-group">
-			<label for="force_ssl">Force SSL (experimental)</label>
-			<select id="force_ssl" class="form-control" name="force_ssl">
-				<option value="1" <?php if($settings->force_ssl==1) echo 'selected="selected"'; ?> >Yes</option>
-				<option value="0" <?php if($settings->force_ssl==0) echo 'selected="selected"'; ?> >No</option>
-			</select>
-		</div>
-
-		<!-- Force Password Reset -->
-		<div class="form-group">
-			<label for="force_pr">Force Password Reset (disabled)</label>
-			<select id="force_pr" class="form-control" name="force_pr" disabled>
-				<option value="1" <?php if($settings->force_pr==1) echo 'selected="selected"'; ?> >Yes</option>
-				<option value="0" <?php if($settings->force_pr==0) echo 'selected="selected"'; ?> >No</option>
-			</select>
-		</div>
-
-		<!-- Site Offline -->
-		<div class="form-group">
-			<label for="site_offline">Site Offline</label>
-			<select id="site_offline" class="form-control" name="site_offline">
-				<option value="1" <?php if($settings->site_offline==1) echo 'selected="selected"'; ?> >Yes</option>
-				<option value="0" <?php if($settings->site_offline==0) echo 'selected="selected"'; ?> >No</option>
-			</select>
-		</div>
-
-		<!-- Track Guests -->
-		<div class="form-group">
-			<label for="track_guest">Track Guests</label>
-			<select id="track_guest" class="form-control" name="track_guest">
-				<option value="1" <?php if($settings->track_guest==1) echo 'selected="selected"'; ?> >Yes</option>
-				<option value="0" <?php if($settings->track_guest==0) echo 'selected="selected"'; ?> >No</option>
-			</select><small>If your site gets a lot of traffic and starts to stumble, this is the first thing to turn off.</small>
-		</div>
-
-		<input type="hidden" name="csrf" value="<?=Token::generate();?>" />
-
-		<p><input class='btn btn-primary' type='submit' name="settings" value='Save Site Settings' /></p>
-		</form>
-	</div> <!-- /col1/2 -->
-
-	<div class="col-xs-12 col-md-6"><!-- CSS Settings Column -->
-		<form class="" action="admin.php" name="css" method="post">
-		<!-- Test CSS Settings -->
-		<h2>Sitewide CSS</h2>
-
-		<div class="form-group">
-			<label for="css_sample">Show CSS Samples</label>
-			<select id="css_sample" class="form-control" name="css_sample">
-				<option value="1" <?php if($settings->css_sample==1) echo 'selected="selected"'; ?> >Enabled</option>
-				<option value="0" <?php if($settings->css_sample==0) echo 'selected="selected"'; ?> >Disabled</option>
-			</select>
-		</div>
-
-		<div class="form-group">
-			<label for="us_css1">Primary Color Scheme (Loaded 1st)</label>
-			<select class="form-control" name="us_css1" id="us_css1" >
-				<option selected="selected"><?=$settings->us_css1?></option>
-				<?php
-				$css_userspice=glob('../users/css/color_schemes/*.css');
-				$css_custom=glob('../usersc/css/color_schemes/*.css');
-				foreach(array_merge($css_userspice,$css_custom) as $filename){
-				echo "<option value=".$filename.">".$filename."";
-				}
-				?>
-			</select>
-		</div>
-
-		<div class="form-group">
-			<label for="us_css2">Secondary UserSpice CSS (Loaded 2nd)</label>
-			<select class="form-control" name="us_css2" id="us_css2">
-				<option selected="selected"><?=$settings->us_css2?></option>
-				<?php
-				$css_userspice=glob('../users/css/*.css');
-				$css_custom=glob('../usersc/css/*.css');
-				foreach(array_merge($css_userspice,$css_custom) as $filename){
-				echo "<option value=".$filename.">".$filename."";
-				}
-				?>
-			</select>
-		</div>
-
-		<div class="form-group">
-			<label for="us_css3">Custom UserSpice CSS (Loaded 3rd)</label>
-			<select class="form-control" name="us_css3" id="us_css3">
-				<option selected="selected"><?=$settings->us_css3?></option>
-				<?php
-				$css_userspice=glob('../users/css/*.css');
-				$css_custom=glob('../usersc/css/*.css');
-				foreach(array_merge($css_userspice,$css_custom) as $filename){
-				echo "<option value=".$filename.">".$filename."";
-				}
-				?>
-			</select>
-		</div>
-
-		<p><input class='btn btn-large btn-primary' type='submit' name="css" value='Save CSS Settings'/></p>
-		</form>
-	</div> <!-- /col1/3 -->
-</div> <!-- /row -->
-
-
-
-<?php if ($settings->css_sample){?>
-<div class="row">
-
-	<div class="col-md-12 text-center">
-	<h2>Bootstrap Class Examples</h2>
-	<hr />
-	<button type="button" name="button" class="btn btn-primary">primary</button>
-	<button type="button" name="button" class="btn btn-info">info</button>
-	<button type="button" name="button" class="btn btn-warning">warning</button>
-	<button type="button" name="button" class="btn btn-danger">danger</button>
-	<button type="button" name="button" class="btn btn-success">success</button>
-	<button type="button" name="button" class="btn btn-default">default</button>
-	<hr />
-	<div class="jumbotron"><h1>Jumbotron</h1></div>
-	<div class="well"><p>well</p></div>
-	<h1>This is H1</h1>
-	<h2>This is H2</h2>
-	<h3>This is H3</h3>
-	<h4>This is H4</h4>
-	<h5>This is H5</h5>
-	<h6>This is H6</h6>
-	<p>This is paragraph</p>
-	<a href="#">This is a link</a><br><br>
-
-	</div>
-</div>
-<?php } ?>
 
 
 
